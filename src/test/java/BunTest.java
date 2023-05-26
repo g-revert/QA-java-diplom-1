@@ -6,31 +6,41 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class BunTest {
-    Bun bun = new Bun("black bun", 100);
 
-    private final String name;
-    private final float price;
+    private final Bun bun;
+    private final String expectedName;
+    private final float expectedPrice;
 
-    public BunTest(String name, float price) {
-        this.name = name;
-        this.price = price;
+    public BunTest(Bun bun, String expectedName, float expectedPrice) {
+        this.bun = bun;
+        this.expectedName = expectedName;
+        this.expectedPrice = expectedPrice;
     }
 
     @Parameterized.Parameters
-    public static Object[][] getSumData() {
+    public static Object[][] getBunData() {
         return new Object[][]{
-                {"black bun", 100F},
+                {new Bun("black bun", 100), "black bun", 100},
+                {new Bun("", -100), "", -100},
+                {new Bun(null, 0F), null, 0F},
+                {new Bun("black white purple cosmic burger_123", 0.1F), "black white purple cosmic burger_123", 0.1F},
+                {new Bun("]-=';[.", 300F), "]-=';[.", 300F},
+                {new Bun("1122334455667788", -0.1F), "1122334455667788", -0.1F},
+
         };
     }
+
     @Test
     public void getNameTest(){
         String ActualName = bun.getName();
-        assertEquals(ActualName, name);
+        assertEquals(expectedName, ActualName);
     }
+
     @Test
-    public void getPriceTest() {
+    public void getPriceTest(){
         float actualPrice = bun.getPrice();
-        assertEquals(actualPrice, price, 0F);
+        assertEquals(expectedPrice, actualPrice, 0F);
     }
+
 }
 
