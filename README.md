@@ -4,6 +4,9 @@ This project is testing a program which helps to order a burger at Stellar Burge
 There are 6 classes: Bun, Burger, Database, Ingredient, IngredientType, Praktikum, for 5 of them unit tests are written - Bun, Burger, Database, Ingredient, IngredientType.
 The test coverage percentage of these classes is 100% (total is 83).
 
+Frameworks used:
+Maven, Junit 4, Mockito.
+
 How to run the tests:
 - open IntelliJ IDEA
 - clone the repo via this link https://github.com/tevizo/QA-java-diplom-1.git
